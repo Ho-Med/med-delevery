@@ -285,7 +285,7 @@
                   class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
                 >
                   <img
-                    :src="bootstrap"
+                    src="https://images-ext-1.discordapp.net/external/R7hyplSsVnqROjk9mjSS6gMMZyCUv3YGhzswWacZC7I/https/upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png?width=375&height=375"
                     class="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   />
@@ -367,17 +367,14 @@ export default {
     getOrders: function () {
       let s=sessionStorage.getItem('session')
       this.state=JSON.parse(s).state
-      console.log(this.state);
+    
       
      var data={
        state : this.state
      }
      setInterval(()=>{ axios
         .post("http://localhost:5000/orders/comingOrders",data)
-        .then(({ data }) => {
-         
-          console.log("this is the order coming from server", data);
-          
+        .then(({ data }) => { 
           for (var i=0; i<data.length ; i++){
                 
             if(data[i].userConfirmation){
@@ -425,7 +422,7 @@ export default {
           this.confirmeOrders.push(this.incomingOrders[i]);
           this.incomingOrders.splice(i, 1);
         }
-        console.log(this.confirmeOrders);
+
       }
      axios.put('http://localhost:5000/confirme/'+id).then(
        ()=>{}

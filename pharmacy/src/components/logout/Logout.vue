@@ -13,8 +13,7 @@ export default {
     methods:{
 
         logout: function(){
-            console.log("got here");
-      localStorage.clear();
+      sessionStorage.clear();
       this.$router.push("/login");
     }
     }
