@@ -322,8 +322,31 @@ class CameraScreen extends Component {
                     </Text>
                 </TouchableOpacity>
             </View>
-        )
-    }
+          
+      
+      
+    );
+  }
+
+  continueButton() {
+    return (
+      <View style={styles.continueButtonWrapStyle}>
+        <TouchableOpacity
+          activeOpacity={0.9}
+          onPress={() =>
+            this.state.prescriptionsList.length != 0
+              ?  this.props.navigation.push('Aploder')
+                // axios.post(url,esmelpersprectionfischema:this.state.prescriptionsList)
+                
+              : null
+          }
+          style={styles.continueButtonStyle}
+        >
+          <Text style={{ ...Fonts.whiteColor19Medium }}>Continue</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
     validPrescriptionText() {
         return (
@@ -558,3 +581,8 @@ CameraScreen.navigationOptions = () => {
 }
 
 export default withNavigation(CameraScreen);
+
+
+
+
+

@@ -13,6 +13,7 @@ export default {
     methods:{
 
         logout: function(){
+            console.log("got here");
       localStorage.clear();
       this.$router.push("/login");
     }
@@ -47,6 +48,7 @@ export default {
     text-decoration: none;
     font-family: var(--font);
     font-size: 1.25rem;
+    cursor: pointer;
 }
 
 .button:before,

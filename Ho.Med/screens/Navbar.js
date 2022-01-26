@@ -50,7 +50,7 @@ class Navbar extends Component {
 
   fetchdata = async () => {
     try {
-      let response = await axios.get("http://192.168.43.184:5000/medecine");
+      let response = await axios.get("192.168.11.30:5000/medecine");
       this.setState({medecine:response.data});
       this.setState({medecines:response.data});
     } catch (error) {
@@ -60,7 +60,7 @@ class Navbar extends Component {
 
   fetchParasData = async () => {
     try {
-      let response = await axios.get("http://192.168.43.184:5000/para/paras");
+      let response = await axios.get("http://192.168.11.30:5000/para/paras");
       this.setState({medecine:response.data});
     } catch (error) {
       console.log(error);
@@ -72,7 +72,7 @@ class Navbar extends Component {
     console.log("yyyyyyyyyyyyyyyyyyyyyyyyyyy", id)
      this.incrementValue() 
    
-    axios.put(`http://192.168.43.184:5000/OrderId/${this.state.id}`, { id })
+    axios.put(`http://192.168.11.30:5000/OrderId/${this.state.id}`, { id })
       .then((res) => {
      this.addProductToCart(id)
       })
@@ -267,10 +267,32 @@ searshForMedicines (medName) {
         </View>
         <View>
           <Button
-            style={styles.bat}
-            title="Prescription"
-            onPress={() => this.props.navigation.navigate("Camera")}
-          />
+                title={'aaaaa'}
+                titleStyle={{ fontWeight: 'bold', fontSize: 18 }}
+                linearGradientProps={{
+                  colors: ['#FF9800', '#F44336'],
+                  start: [1, 0],
+                  end: [0.2, 0],
+                }}
+                buttonStyle={{
+                  borderWidth: 0,
+                  borderColor: 'transparent',
+                  borderRadius: 20,
+                }}
+                containerStyle={{
+                  width: 200,
+                  marginHorizontal: 50,
+                  marginVertical: 10,
+                }}
+                icon={{
+                  name: 'arrow-right',
+                  type: 'font-awesome',
+                  size: 15,
+                  color: 'white',
+                }}
+                iconRight
+                iconContainerStyle={{ marginLeft: 10, marginRight: -10 }}
+              />
         </View>
         <View
           style={{

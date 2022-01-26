@@ -1,6 +1,7 @@
 <template>
   <div class="body">
-    <logout-component class="logout"/>
+    <img class="appLogo"
+     :src="logo">
     <section
       class="header relative pt-16 items-center flex h-screen max-h-860-px"
     >
@@ -76,7 +77,6 @@
 <script>
 // import IndexNavbar from "@/components/Navbars/IndexNavbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
-import LogoutComponent from "@/components/logout/Logout.vue";
 import patternVue from "@/assets/img/pattern_vue.png";
 import componentBtn from "@/assets/img/component-btn.png";
 import componentProfileCard from "@/assets/img/component-profile-card.png";
@@ -85,12 +85,13 @@ import componentInfo2 from "@/assets/img/component-info-2.png";
 import componentMenu from "@/assets/img/component-menu.png";
 import componentBtnPink from "@/assets/img/component-btn-pink.png";
 import documentation from "@/assets/img/documentation.png";
-import login from "@/assets/img/login.jpg";
+// import login from "@/assets/img/login.jpg";
 import profile1 from "@/assets/img/profile1.jpg";
 import landing from "@/assets/img/landing.jpg";
 import parapharamcy from "@/assets/img/PARAPHARMACY.jpg";
 import para1 from "@/assets/img/para2.jpg";
 import dashboard1 from "@/assets/img/dashboard1.jpg";
+import logo from "@/assets/img/transparent-icon.png";
 
 export default {
   data() {
@@ -103,18 +104,19 @@ export default {
       componentMenu,
       componentBtnPink,
       documentation,
-      login,
+      
       profile1,
       landing,
       parapharamcy,
       para1,
       dashboard1,
+      logo
     };
   },
   components: {
     // IndexNavbar,
     FooterComponent,
-    LogoutComponent
+  
   },
 };
 </script>
@@ -129,8 +131,11 @@ export default {
   margin-top: 10px;
   width: 52%;
 }
-.logout{
-  margin-left:90%;
-  margin-top: 1%;
+.appLogo{
+  margin-top: -12%;
+  height:25%;
+  width: 20%;
+  margin-bottom: -10%;
+
 }
 </style>

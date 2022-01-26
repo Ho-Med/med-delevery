@@ -167,11 +167,14 @@
         </ul>
       </div>
     </div>
+    <logout-component class="logout"/>
   </nav>
 </template>
 ); }
 
 <script>
+import LogoutComponent from "@/components/logout/Logout.vue";
+
 export default {
   data() {
     return {
@@ -183,6 +186,15 @@ export default {
       this.collapseShow = classes;
     },
   },
-  components: {},
+  components: {
+    LogoutComponent
+  },
+  
 };
 </script>
+<style scoped>
+.logout{
+   margin-top: -45%; 
+   
+  }
+</style>
