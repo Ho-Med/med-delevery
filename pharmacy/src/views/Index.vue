@@ -1,9 +1,11 @@
 <template>
   <div class="body">
-   
     <section
       class="header relative pt-16 items-center flex h-screen max-h-860-px"
     >
+      <div class="logo">
+        <img alt="..." :src="logo" />
+      </div>
       <div class="container mx-auto">
         <div class="justify-center flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4 -mt-24">
@@ -90,6 +92,7 @@ import landing from "@/assets/img/landing.jpg";
 import parapharamcy from "@/assets/img/PARAPHARMACY.jpg";
 import para1 from "@/assets/img/para2.jpg";
 import dashboard1 from "@/assets/img/dashboard1.jpg";
+import logo from "@/assets/img/logos.png";
 
 
 export default {
@@ -109,18 +112,16 @@ export default {
       parapharamcy,
       para1,
       dashboard1,
-      
+      logo,
     };
   },
   components: {
     // IndexNavbar,
     FooterComponent,
-  
   },
 };
 </script>
 <style scoped>
-
 #order {
   margin-top: 90px;
 }
@@ -130,5 +131,11 @@ export default {
   margin-top: 10px;
   width: 52%;
 }
-
+.logout {
+  margin-left: 90%;
+  margin-top: 1%;
+}
+.logo {
+  margin-bottom: 800px;
+}
 </style>

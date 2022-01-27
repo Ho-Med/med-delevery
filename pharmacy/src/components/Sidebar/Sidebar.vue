@@ -18,7 +18,7 @@
         class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
         to="/Index"
       >
-        Ho-Med
+        <img alt="..." :src="logo" />
       </router-link>
       <!-- User -->
       <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -166,6 +166,7 @@
           </li>
         </ul>
       </div>
+      <logout-component class="logout" />
     </div>
   
   </nav>
@@ -173,12 +174,13 @@
 ); }
 
 <script>
-
-
+import logo from "@/assets/img/logos.png";
+import LogoutComponent from "@/components/logout/Logout.vue";
 export default {
   data() {
     return {
       collapseShow: "hidden",
+      logo,
     };
   },
   methods: {
@@ -186,6 +188,8 @@ export default {
       this.collapseShow = classes;
     },
   },
-  components: {  },
-}
+  components: {
+    LogoutComponent,
+  },
+};
 </script>
