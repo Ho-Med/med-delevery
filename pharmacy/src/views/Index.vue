@@ -1,7 +1,6 @@
 <template>
   <div class="body">
-    <img class="appLogo"
-     :src="logo">
+   
     <section
       class="header relative pt-16 items-center flex h-screen max-h-860-px"
     >
@@ -91,7 +90,7 @@ import landing from "@/assets/img/landing.jpg";
 import parapharamcy from "@/assets/img/PARAPHARMACY.jpg";
 import para1 from "@/assets/img/para2.jpg";
 import dashboard1 from "@/assets/img/dashboard1.jpg";
-import logo from "@/assets/img/transparent-icon.png";
+
 
 export default {
   data() {
@@ -110,7 +109,7 @@ export default {
       parapharamcy,
       para1,
       dashboard1,
-      logo
+      
     };
   },
   components: {
@@ -131,11 +130,5 @@ export default {
   margin-top: 10px;
   width: 52%;
 }
-.appLogo{
-  margin-top: -12%;
-  height:25%;
-  width: 20%;
-  margin-bottom: -10%;
 
-}
 </style>
