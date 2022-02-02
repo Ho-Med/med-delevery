@@ -12,6 +12,7 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { withNavigation } from "react-navigation";
 import { Colors, Fonts, Sizes } from "../constant/styles";
@@ -20,7 +21,7 @@ import { TransitionPresets } from "react-navigation-stack";
 import * as ImagePicker from "expo-image-picker";
 import Dialog from "react-native-dialog";
 import { FlatList } from "react-native-gesture-handler";
-import axios from "axios";
+
 const { width, height } = Dimensions.get("screen");
 
 class CameraScreen extends Component {
@@ -49,7 +50,6 @@ class CameraScreen extends Component {
     prescriptionsList: [],
     deleteDialog: false,
     currentPrescriptionId: "",
-    image:'',
   };
 
   render() {
@@ -98,9 +98,9 @@ class CameraScreen extends Component {
             }}
           >
             Our Pharmacist will call you to confirm medicines from your
-            prescriptions 
+            prescriptions by
           </Text>
-          <Text style={{ ...Fonts.primaryColor18Medium }}></Text>
+          <Text style={{ ...Fonts.primaryColor18Medium }}>6:19 PM Today</Text>
         </View>
       </View>
     );
@@ -266,9 +266,8 @@ class CameraScreen extends Component {
 
   pickImageFromCamera = async () => {
     let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
-      aspect: [4, 3],
-      base64: true
     });
 
     if (!result.cancelled) {
@@ -277,75 +276,11 @@ class CameraScreen extends Component {
         id: Date.now(),
         url: result.uri,
       };
+      console.log("jjjjjjjjjjjjjj", result);
       newDataImg.push(item);
       this.setState({ prescriptionsList: newDataImg });
-      this.setState({ image: result.uri })
-      
-        let base64Img = `data:image/jpg;base64,${result.base64}`
-        let apiUrl = 'https://api.cloudinary.com/v1_1/ben-arous/image/upload';
-    
-        let data = {
-          "file": base64Img,
-          "upload_preset": "lsom30en",
-        }
-  
-        fetch(apiUrl, {
-          body: JSON.stringify(data),
-          headers: {
-            'content-type': 'application/json'
-          },
-          method: 'POST',
-        }).then(async r => {
-            let data = await r.json()
-            console.log(data)
-            return data.secure_url
-      }).catch(err=>console.log(err))
     }
   };
-
- 
-
-  pickImageFromGallery = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-       
-        allowsEditing: true,
-        aspect: [4, 3],
-        base64: true
-    })
-
-    if (!result.cancelled) {
-        let newDataImg = this.state.prescriptionsList;
-        let item = {
-            id: Date.now(),
-            url: result.uri,
-        };
-        console.log('ggggggggg',result);
-        newDataImg.push(item);
-        this.setState({ prescriptionsList: newDataImg });
-        this.setState({ image: result.uri })
-      
-        let base64Img = `data:image/jpg;base64,${result.base64}`
-        
-        let apiUrl = 'https://api.cloudinary.com/v1_1/ben-arous/image/upload';
-    
-        let data = {
-          "file": base64Img,
-          "upload_preset": "lsom30en",
-        }
-  
-        fetch(apiUrl, {
-          body: JSON.stringify(data),
-          headers: {
-            'content-type': 'application/json'
-          },
-          method: 'POST',
-        }).then(async r => {
-            let data = await r.json()
-            console.log(data.secure_url)
-            return data.secure_url
-      }).catch(err=>console.log(err))
-    }
-}
 
   chooseFromCameraOrGalleryBox() {
     return (
@@ -443,10 +378,10 @@ class CameraScreen extends Component {
           activeOpacity={0.9}
           onPress={() =>
             this.state.prescriptionsList.length != 0
-              ? // this.props.navigation.push('PreviouslyBoughtItems')
+              ?  this.props.navigation.push('Aploder')
                 // axios.post(url,esmelpersprectionfischema:this.state.prescriptionsList)
-                console.log("Prescriptions list:", this.state.prescriptionsList)
-              : null
+                
+              :     Alert.alert("hint", "You need to upload your prescription")
           }
           style={styles.continueButtonStyle}
         >
@@ -522,12 +457,7 @@ class CameraScreen extends Component {
     return (
       <View style={styles.headerWrapStyle}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <MaterialIcons
-            name="arrow-back"
-            size={24}
-            color={Colors.whiteColor}
-            onPress={() => this.props.navigation.pop()}
-          />
+         
           <Text
             style={{
               width: width / 1.7,
@@ -539,12 +469,7 @@ class CameraScreen extends Component {
           </Text>
         </View>
         <View style={{ flexDirection: "row" }}>
-          <MaterialIcons
-            name="search"
-            size={26}
-            color={Colors.whiteColor}
-            onPress={() => this.props.navigation.push("Search")}
-          />
+          
           <TouchableOpacity
             activeOpacity={0.9}
             onPress={() => this.props.navigation.push("Cart")}
@@ -714,3 +639,8 @@ CameraScreen.navigationOptions = () => {
 };
 
 export default withNavigation(CameraScreen);
+
+
+
+
+

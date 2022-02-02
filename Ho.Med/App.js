@@ -10,6 +10,7 @@ import React, { useState, useEffect } from 'react'
 import RegisterScreen from "./screens/RegisterScreen";
 import Login from "./screens/SigninScreen";
 import LandingPage from "./screens/LandingPage";
+import AppIntro from "./screens/AppIntro"
 import Footer from "./screens/Footer";
 import NotificationScreen from "./screens/Notification";
 import ReminderScreen from "./screens/Reminder"
@@ -26,6 +27,7 @@ import ResetPasswordVerification from './screens/ResetPasswordVerification';
 import NewPassword from "./screens/NewPassword";
 import Feedback from "./screens/Feedback";
 import Paiment from "./screens/Paiment";
+import Aploder from './screens/AppLoder';
 const Stack = createNativeStackNavigator();
 
 
@@ -118,11 +120,21 @@ export default function App() {
                       component={CameraScreen}
                       options={{ headerShown: true }}
                     />
+                      <Stack.Screen
+                      name="Aploder"
+                      component={Aploder}
+                      options={{ headerShown: false }}
+                    />
                   </>
                   :
                   <><Stack.Screen
                     name="landingPage"
                     component={LandingPage}
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="AppIntroSlider"
+                    component={AppIntro}
                     options={{ headerShown: false }}
                   />
                    <Stack.Screen

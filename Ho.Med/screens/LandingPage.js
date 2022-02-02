@@ -11,31 +11,37 @@ import { Sizes } from "../constant/styles";
 
 import { withNavigation } from "react-navigation";
 
+
 class LandingPage extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.title}>Welcome to our application</Text>
+
         <ImageBackground
-          source={require("../assets/images/LAND.png")}
+          source={require("../assets/images/landing_prev_ui.png")}
           resizeMode="cover"
           style={styles.backgroundImage}
         >
-          <Text style={styles.text}> Pharmacy at your finger tips </Text>
+          
         </ImageBackground>
+        <Text style={styles.text}> </Text>
+
         {this.exploreButton()}
       </View>
     );
   }
+
   exploreButton() {
     return (
       <TouchableOpacity
         onPress={() => {
-          this.props.navigation.push("registerScreen");
+          this.props.navigation.push("AppIntroSlider");
         }}
         activeOpacity={0.9}
         style={styles.exploreButton}
       >
-        <Text style={styles.text2}> Explore</Text>
+        <Text style={styles.explore}> Explore</Text>
       </TouchableOpacity>
     );
   }
@@ -44,24 +50,25 @@ class LandingPage extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#c6dee4",
+    //backgroundColor: "#c6dee4",
   },
   backgroundImage: {
-    width: 600,
-    height: 500,
-    marginTop: 200,
-    marginLeft: -50,
+    width: 500,
+    height: 300,
+    marginTop: 150,
+    marginLeft:50,
   },
-  text: {
-    //  fontFamily:"Helvetica Neue",
+  title:{
     fontSize: 20,
+    fontWeight: "bold",
     lineHeight: 28,
-    color: "#29aba7",
-    marginTop: 90,
+    color: "#283e76",
+    marginTop: 100,
+    marginLeft: 150,
 
-    marginLeft: 70,
   },
-  text2: {
+  
+  explore: {
     color: "#c7e2eb",
   },
   exploreButton: {
@@ -71,6 +78,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginHorizontal: 155,
     borderRadius: 20,
+    marginTop:230,
   },
 });
 LandingPage.navigationOptions = () => {

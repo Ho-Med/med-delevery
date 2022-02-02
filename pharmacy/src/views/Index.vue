@@ -1,9 +1,11 @@
 <template>
   <div class="body">
-    <logout-component class="logout"/>
     <section
       class="header relative pt-16 items-center flex h-screen max-h-860-px"
     >
+      <div class="logo">
+        <img alt="..." :src="logo" />
+      </div>
       <div class="container mx-auto">
         <div class="justify-center flex flex-wrap">
           <div class="w-full lg:w-12/12 px-4 -mt-24">
@@ -76,7 +78,6 @@
 <script>
 // import IndexNavbar from "@/components/Navbars/IndexNavbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
-import LogoutComponent from "@/components/logout/Logout.vue";
 import patternVue from "@/assets/img/pattern_vue.png";
 import componentBtn from "@/assets/img/component-btn.png";
 import componentProfileCard from "@/assets/img/component-profile-card.png";
@@ -85,12 +86,14 @@ import componentInfo2 from "@/assets/img/component-info-2.png";
 import componentMenu from "@/assets/img/component-menu.png";
 import componentBtnPink from "@/assets/img/component-btn-pink.png";
 import documentation from "@/assets/img/documentation.png";
-import login from "@/assets/img/login.jpg";
+// import login from "@/assets/img/login.jpg";
 import profile1 from "@/assets/img/profile1.jpg";
 import landing from "@/assets/img/landing.jpg";
 import parapharamcy from "@/assets/img/PARAPHARMACY.jpg";
 import para1 from "@/assets/img/para2.jpg";
 import dashboard1 from "@/assets/img/dashboard1.jpg";
+import logo from "@/assets/img/logos.png";
+
 
 export default {
   data() {
@@ -103,23 +106,22 @@ export default {
       componentMenu,
       componentBtnPink,
       documentation,
-      login,
+      
       profile1,
       landing,
       parapharamcy,
       para1,
       dashboard1,
+      logo,
     };
   },
   components: {
     // IndexNavbar,
     FooterComponent,
-    LogoutComponent
   },
 };
 </script>
 <style scoped>
-
 #order {
   margin-top: 90px;
 }
@@ -129,8 +131,11 @@ export default {
   margin-top: 10px;
   width: 52%;
 }
-.logout{
-  margin-left:90%;
+.logout {
+  margin-left: 90%;
   margin-top: 1%;
+}
+.logo {
+  margin-bottom: 800px;
 }
 </style>

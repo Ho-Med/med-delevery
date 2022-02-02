@@ -41,14 +41,14 @@ import {
   RocketIcon,
   StatsIcon,
   WalletIcon,
+  CreativeTimLogo
 } from "components/Icons/Icons.js";
 import DashboardTableRow from "components/Tables/DashboardTableRow";
 import TimelineRow from "components/Tables/TimelineRow";
 import React, { useState, useEffect } from "react";
 // react icons
-import { BsArrowRight } from "react-icons/bs";
-import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
-import { dashboardTableData, timelineData } from "variables/general";
+
+import {  timelineData } from "variables/general";
 import axios from "axios";
 
 export default function Dashboard() {
@@ -73,16 +73,33 @@ export default function Dashboard() {
   const overlayRef = React.useRef();
   const [tableData, setTableData] = useState([]);
   const [names, setNames] = useState([]);
+  const [numberOfUsers, setNumberOfUsers] = useState(0);
+  const [numberOfOrders,setNumberOfOrders] = useState(0);
+  const [numberOfPharmacies, setNumberOfPharmacies] = useState(0);
+  const [sales, setSales] = useState(0);
+  const [numberOfNewUsers, setNumberOfNewUsers] = useState(0);
+  
 
   useEffect(() => {
     axios.get("http://localhost:5000/admin/getfeedbacks").then(({ data }) => {
       console.log(data);
       setTableData(data.feedbacks);
       setNames(data.result)
-
-     
-
     });
+    axios.get("http://localhost:5000/admin/getInsights").then(({ data }) => {
+      console.log("data",data);
+      setNumberOfOrders(data.orders.length)
+      setNumberOfUsers(data.users.length)
+      setNumberOfPharmacies(data.pharmacies.length)
+      setSales(data.totalSales)
+     });
+    
+    axios.get("http://localhost:5000/admin/Users").then(({ data }) => {
+      console.log(data);
+      setNumberOfNewUsers(data.length)
+    });
+
+   
   }, []);
   return (
     <Flex flexDirection="column" pt={{ base: "120px", md: "75px" }}>
@@ -101,7 +118,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor}>
-                    2,300
+                   {numberOfNewUsers}
                   </StatNumber>
                   <StatHelpText
                     alignSelf="flex-end"
@@ -136,7 +153,7 @@ export default function Dashboard() {
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color={textColor}>
-                    +3,020
+                    + 13
                   </StatNumber>
                   <StatHelpText
                     alignSelf="flex-end"
@@ -200,71 +217,7 @@ export default function Dashboard() {
         my="26px"
         gap="24px"
       >
-        <Card maxHeight="290.5px" p="1rem">
-          <CardBody
-            p="0px"
-            backgroundImage={peopleImage}
-            bgPosition="center"
-            bgRepeat="no-repeat"
-            w="100%"
-            h={{ sm: "200px", lg: "100%" }}
-            bgSize="cover"
-            position="relative"
-            borderRadius="15px"
-          >
-            <Box
-              bg="linear-gradient(360deg, rgba(49, 56, 96, 0.16) 0%, rgba(21, 25, 40, 0.88) 100%)"
-              w="100%"
-              position="absolute"
-              h="inherit"
-              borderRadius="inherit"
-              ref={overlayRef}
-            ></Box>
-            <Portal containerRef={overlayRef}>
-              <Flex
-                flexDirection="column"
-                color="white"
-                p="1.5rem 1.2rem 0.3rem 1.2rem"
-                lineHeight="1.6"
-              >
-                <Text fontSize="xl" fontWeight="bold" pb=".3rem">
-                  Work with the rockets
-                </Text>
-                <Text fontSize="sm" fontWeight="normal" w={{ lg: "92%" }}>
-                  Wealth creation is a revolutionary recent positive-sum game.
-                  It is all about who takes the opportunity first.
-                </Text>
-                <Spacer />
-                <Flex
-                  align="center"
-                  mt={{ sm: "20px", lg: "40px", xl: "90px" }}
-                >
-                  <Button p="0px" variant="no-hover" bg="transparent" mt="12px">
-                    <Text
-                      fontSize="sm"
-                      fontWeight="bold"
-                      _hover={{ me: "4px" }}
-                      transition="all .5s ease"
-                    >
-                      Read more
-                    </Text>
-                    <Icon
-                      as={BsArrowRight}
-                      w="20px"
-                      h="20px"
-                      fontSize="xl"
-                      transition="all .5s ease"
-                      mx=".3rem"
-                      cursor="pointer"
-                      _hover={{ transform: "translateX(20%)" }}
-                      pt="4px"
-                    />
-                  </Button>
-                </Flex>
-              </Flex>
-            </Portal>
-          </CardBody>
-        </Card>
+        
       </Grid>
       <Grid
         templateColumns={{ sm: "1fr", lg: "1.3fr 1.7fr" }}
@@ -307,7 +260,7 @@ export default function Dashboard() {
                       bg={iconTeal}
                       me="6px"
                     >
-                      <WalletIcon h={"15px"} w={"15px"} color={iconBoxInside} />
+                      <StatsIcon h={"15px"} w={"15px"} color={iconBoxInside} />
                     </IconBox>
                     <Text fontSize="sm" color="gray.400" fontWeight="semibold">
                       Users
@@ -320,7 +273,7 @@ export default function Dashboard() {
                     mb="6px"
                     my="6px"
                   >
-                    32,984
+                   {numberOfUsers}
                   </Text>
                   <Progress
                     colorScheme="teal"
@@ -335,13 +288,13 @@ export default function Dashboard() {
                       as="box"
                       h={"30px"}
                       w={"30px"}
-                      bg={iconTeal}
+                      bg={ iconTeal}
                       me="6px"
                     >
-                      <RocketIcon h={"15px"} w={"15px"} color={iconBoxInside} />
+                      <CreativeTimLogo h={"155px"} w={"15px"} color={iconBoxInside} />
                     </IconBox>
                     <Text fontSize="sm" color="gray.400" fontWeight="semibold">
-                      Clicks
+                      Partners
                     </Text>
                   </Flex>
                   <Text
@@ -351,7 +304,7 @@ export default function Dashboard() {
                     mb="6px"
                     my="6px"
                   >
-                    2.42m
+                    {numberOfPharmacies}
                   </Text>
                   <Progress
                     colorScheme="teal"
@@ -369,7 +322,7 @@ export default function Dashboard() {
                       bg={iconTeal}
                       me="6px"
                     >
-                      <CartIcon h={"15px"} w={"15px"} color={iconBoxInside} />
+                      <WalletIcon h={"15px"} w={"15px"} color={iconBoxInside} />
                     </IconBox>
                     <Text fontSize="sm" color="gray.400" fontWeight="semibold">
                       Sales
@@ -382,7 +335,7 @@ export default function Dashboard() {
                     mb="6px"
                     my="6px"
                   >
-                    2,400$
+                    {sales}TND
                   </Text>
                   <Progress
                     colorScheme="teal"
@@ -400,10 +353,10 @@ export default function Dashboard() {
                       bg={iconTeal}
                       me="6px"
                     >
-                      <StatsIcon h={"15px"} w={"15px"} color={iconBoxInside} />
+                      <CartIcon h={"15px"} w={"15px"} color={iconBoxInside} />
                     </IconBox>
                     <Text fontSize="sm" color="gray.400" fontWeight="semibold">
-                      Items
+                      Orders
                     </Text>
                   </Flex>
                   <Text
@@ -413,7 +366,7 @@ export default function Dashboard() {
                     mb="6px"
                     my="6px"
                   >
-                    320
+                   {numberOfOrders}
                   </Text>
                   <Progress
                     colorScheme="teal"
@@ -436,7 +389,7 @@ export default function Dashboard() {
                 <Text as="span" color="green.400" fontWeight="bold">
                   (+5%) more
                 </Text>{" "}
-                in 2021
+                this month
               </Text>
             </Flex>
           </CardHeader>
