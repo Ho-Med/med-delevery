@@ -98,7 +98,7 @@ class SigninScreen extends Component {
     if (this.state.username == '' || this.state.password == '') {
       this.handlemsg("Please fill all the fields")
     }
-    const url = "http://192.168.11.6:5000/users/authenticate";
+    const url = 'http://192.168.11.207:5000/users/authenticate'
     
     axios.post(url, { username: username, password: password }).then((res) => {
 
@@ -268,11 +268,11 @@ const styles = StyleSheet.create({
     marginTop: Sizes.fixPadding * 4.0,
   },
   appLogoStyle: {
-    width: 200.0,
-    height: 200.0,
+    width: 400.0,
+    height: 350.0,
     alignSelf: "center",
     marginBottom: Sizes.fixPadding,
-    marginTop: Sizes.fixPadding * 3.0,
+    marginTop: Sizes.fixPadding * 1.0,
   },
   textFieldStyle: {
     borderColor: "rgba(0, 150, 136, 0.3)",

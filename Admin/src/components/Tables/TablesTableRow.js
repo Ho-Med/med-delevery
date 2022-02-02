@@ -74,15 +74,29 @@ function TablesTableRow(props) {
         </Flex>
       </Td>
       <Td>
-        <Badge
-          bg={connected === "true" ? "green.400" : bgStatus}
-          color={connected === "!true" ? "white" : colorStatus}
+        {connected ? <Badge
+          bg= "green.600" 
+          color="white" 
           fontSize="16px"
           p="3px 10px"
           borderRadius="8px"
+          marginLeft="-10px"
+
         >
-          {connected}
-        </Badge>
+          online
+        </Badge> : 
+         <Badge 
+           bg="red"
+          color="white"
+          fontSize="16px"
+          p="3px 10px"
+          borderRadius="8px"
+          marginLeft="-10px"
+
+        >
+          offline
+        </Badge>}
+       
       </Td>
       <Td>
         <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">

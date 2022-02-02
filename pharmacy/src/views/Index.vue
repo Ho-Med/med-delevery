@@ -78,7 +78,6 @@
 <script>
 // import IndexNavbar from "@/components/Navbars/IndexNavbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
-
 import patternVue from "@/assets/img/pattern_vue.png";
 import componentBtn from "@/assets/img/component-btn.png";
 import componentProfileCard from "@/assets/img/component-profile-card.png";
@@ -87,13 +86,14 @@ import componentInfo2 from "@/assets/img/component-info-2.png";
 import componentMenu from "@/assets/img/component-menu.png";
 import componentBtnPink from "@/assets/img/component-btn-pink.png";
 import documentation from "@/assets/img/documentation.png";
-import login from "@/assets/img/login.jpg";
+// import login from "@/assets/img/login.jpg";
 import profile1 from "@/assets/img/profile1.jpg";
 import landing from "@/assets/img/landing.jpg";
 import parapharamcy from "@/assets/img/PARAPHARMACY.jpg";
 import para1 from "@/assets/img/para2.jpg";
 import dashboard1 from "@/assets/img/dashboard1.jpg";
 import logo from "@/assets/img/logos.png";
+
 
 export default {
   data() {
@@ -106,7 +106,7 @@ export default {
       componentMenu,
       componentBtnPink,
       documentation,
-      login,
+      
       profile1,
       landing,
       parapharamcy,

@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import { withNavigation } from "react-navigation";
 import { Colors, Fonts, Sizes } from "../constant/styles";
+
 import { MaterialIcons } from "@expo/vector-icons";
 import { TransitionPresets } from "react-navigation-stack";
 import IntlPhoneInput from "react-native-intl-phone-input";
@@ -96,7 +97,7 @@ class RegisterScreen extends Component {
     var num = this.state.PhoneNumber.phoneNumber;
     console.log("kkkkkkkkkkkkkkk", num);
     try {
-      let response = await axios.post("http://192.168.11.6:5000/", {
+      let response = await axios.post("http://192.168.43.198:5000/", {
         number: num,
       });
       this.setState({ verifNum1: response.data.num1 });
@@ -232,7 +233,7 @@ class RegisterScreen extends Component {
     ) {
       this.handlemsg("Please fill all the fields");
     }
-    const url = "http://192.168.11.6:5000/users/register",
+    const url = "http://192.168.43.198:5000/users/register",
       data = {
         username: this.state.username,
         password: this.state.password,
@@ -317,7 +318,7 @@ class RegisterScreen extends Component {
     return (
       <Image
         source={require("../assets/images/transparent-icon.png")}
-        style={styles.appLogoStyle}
+         style={styles.appLogoStyle}
         resizeMode="contain"
       />
     );
@@ -342,11 +343,11 @@ const styles = StyleSheet.create({
     marginTop: Sizes.fixPadding * 4.0,
   },
   appLogoStyle: {
-    width: 200.0,
-    height: 200.0,
+    width: 400.0,
+    height: 300.0,
     alignSelf: "center",
     marginBottom: Sizes.fixPadding,
-    marginTop: Sizes.fixPadding * 3.0,
+    marginTop: Sizes.fixPadding * 2.0,
   },
   textFieldStyle: {
     borderColor: "rgba(0, 150, 136, 0.3)",

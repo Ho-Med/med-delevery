@@ -111,7 +111,7 @@ export default {
       axios
         .post("http://localhost:5000/pharmacies/authenticate", identity)
         .then(({ data }) => {
-         console.log(data);
+         
           if(data.success===false) {
            if(data.msg==="Pharmacy banned"){this.banMessage="Your pharmacy has been banned , please check with the administrator"}
            if(data.msg==="Wrong password"){this.passwordError=" incorrect username or password "}

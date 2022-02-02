@@ -168,6 +168,7 @@
       </div>
       <logout-component class="logout" />
     </div>
+  
   </nav>
 </template>
 ); }

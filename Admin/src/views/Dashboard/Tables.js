@@ -23,7 +23,7 @@ import moment from "moment"
 
 function Tables() {
   const textColor = useColorModeValue("gray.700", "white");
-  const [pharmacietable, setPharmacietable] = useState([]);
+  const [pharmacytable, setPharmaciestable] = useState([]);
   const [userstable, setUserstable] = useState([]);
 
 
@@ -32,7 +32,7 @@ function Tables() {
     .then(({data}) =>{
       console.log(data);
      
-      setPharmacietable(data.pharmacies)
+      setPharmaciestable(data.pharmacies)
       setUserstable(data.users)
     }) 
   },[])
@@ -63,14 +63,14 @@ function Tables() {
             <Tbody>
              
               {
-              pharmacietable.map((row) => {
+              pharmacytable.map((row) => {
                 return (
                   <TablesTableRow
                     name={row.username}
                     logo={row.logo}
                     email={row.email}
                     domain={row.location}
-                    status={row.connected}
+                    connected={row.connected}
                     date={moment(row.createdAt).format("MMM Do YY")}
                     
                     _id={row._id}
@@ -116,7 +116,7 @@ function Tables() {
                     email={row.email}
                     vip={row.vip}
                     budget={row.phoneNumber}
-                  
+                    connected={row.connected}
                     _id={row._id}
                     banned={row.banned}/>
                 );

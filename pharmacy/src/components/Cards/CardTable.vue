@@ -4,6 +4,7 @@
       class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
       :class="[color === 'light' ? 'bg-white' : 'bg-emerald-900 text-white']"
     >
+      
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <div class="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -343,6 +344,7 @@
 </template>
 <script>
 import axios from "axios";
+
 export default {
   data() {
     return {
@@ -357,7 +359,8 @@ export default {
       medecines:[],
       show: false,
       currentId:"",
-      currentEdit2:''
+      currentEdit2:'',
+   
     };
   },
   methods: {
@@ -389,14 +392,16 @@ export default {
             
             }
           }
+        console.log("coming",this.incomingOrders);
            var arr=[]
            for (let medecin in this.incomingOrders){
-             arr=this.incomingOrders[medecin].medecineId
+             arr.push(this.incomingOrders[medecin].medecineId)
            }
+         
           axios.post("http://localhost:5000/orders/getMedecines",arr)
           .then(({ data }) => {
           this.medecines=data
-         
+         console.log("data from server",this.medecines);
         })
         })
         .catch((err) => {
@@ -598,5 +603,6 @@ label {
 	align-items: center;
 	padding: 20px;
 }
+
 
 </style>

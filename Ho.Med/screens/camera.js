@@ -12,6 +12,7 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { withNavigation } from "react-navigation";
 import { Colors, Fonts, Sizes } from "../constant/styles";
@@ -380,7 +381,7 @@ class CameraScreen extends Component {
               ?  this.props.navigation.push('Aploder')
                 // axios.post(url,esmelpersprectionfischema:this.state.prescriptionsList)
                 
-              : null
+              :     Alert.alert("hint", "You need to upload your prescription")
           }
           style={styles.continueButtonStyle}
         >
@@ -456,12 +457,7 @@ class CameraScreen extends Component {
     return (
       <View style={styles.headerWrapStyle}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <MaterialIcons
-            name="arrow-back"
-            size={24}
-            color={Colors.whiteColor}
-            onPress={() => this.props.navigation.pop()}
-          />
+         
           <Text
             style={{
               width: width / 1.7,
@@ -473,12 +469,7 @@ class CameraScreen extends Component {
           </Text>
         </View>
         <View style={{ flexDirection: "row" }}>
-          <MaterialIcons
-            name="search"
-            size={26}
-            color={Colors.whiteColor}
-            onPress={() => this.props.navigation.push("Search")}
-          />
+          
           <TouchableOpacity
             activeOpacity={0.9}
             onPress={() => this.props.navigation.push("Cart")}

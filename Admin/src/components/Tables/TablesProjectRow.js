@@ -8,18 +8,19 @@ import {
   Icon,
   Button,
   Avatar,
+  Badge,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { FaEllipsisV } from "react-icons/fa";
+import { RiVipLine } from "react-icons/fa";
 import axios from "axios"
 
 
 function DashboardTableRow(props) {
-  const { logo, name, email ,vip, budget , _id , banned } = props;
-  const textColorG = useColorModeValue("green.700", "white");
+  const { logo, name, email ,vip, budget , _id , banned , connected} = props;
+  const textColorG = useColorModeValue("green.400", "white");
   const textColor = useColorModeValue("gray.700", "white");
-
-  const bgStatus = useColorModeValue("green.400", "#1a202c");
+  const colorStatus = useColorModeValue("white", "gray.400");
+  const bgStatus = useColorModeValue("gold", "#1a202c");
 
   const [toggleban, setToggleban] = useState(banned);
 
@@ -83,14 +84,30 @@ function DashboardTableRow(props) {
           {budget}
         </Text>
       </Td>
-      <Td>
-        { vip ? <Text fontSize="md" color={textColorG} fontWeight="bold" pb=".5rem">
-          {vip}
-        </Text> : <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
-          {vip}
-        </Text>  }
-        
-      </Td>
+      { vip ? <Badge
+          bg= "silver" 
+          color="white" 
+          fontSize="16px"
+          p="3px 10px"
+          borderRadius="8px"
+          marginTop="40px"
+          marginLeft="25px"
+        >
+          vip
+        </Badge> : 
+         <Badge 
+           bg="#1a202c"
+          color="gray.400"
+          fontSize="16px"
+          p="3px 10px"
+          borderRadius="8px"
+          marginTop="40px"
+          marginLeft="30px"
+
+        >
+          
+        </Badge>
+        }
       
       <Td>
         {banned ? <Button p="0px" bg="transparent" variant="no-hover" onClick={ ()=>{unban(_id)}} >
