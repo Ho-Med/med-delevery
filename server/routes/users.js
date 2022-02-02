@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 
 
 router.post("/register", (req, res, next) => {
-  
+  console.log("work");
     let newUser = new user ({
         name: req.body.username,
         email: req.body.emailAddress,

@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
   vip: { type: Boolean, default: false },
   connected: { type: Boolean, default: false },
   banned: { type: Boolean, default: false },
+  createdAt: { type: Date, immutable: true, default: () => Date.now() },
 });
 
 userSchema.plugin(AutoIncrement, { id: "id_seq", inc_field: "id" });
